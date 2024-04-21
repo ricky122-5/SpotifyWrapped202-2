@@ -187,6 +187,8 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                             if (!response.isSuccessful()) {
+                                Log.e("Spotify API Error", "HTTP error code: " + response.code());
+                                Log.e("Spotify API Error", "Error body: " + response.body().string());
                                 throw new IOException("Unexpected code " + response);
                             } else {
                                 final String responseData = response.body().string();
